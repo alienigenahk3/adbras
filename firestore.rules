@@ -1,0 +1,55 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Events collection with server-side time validation
+    match /events/{eventId} {
+      allow read: if true;
+      allow create, update: if (
+        !('startTime' in request.resource.data) || 
+        !('endTime' in request.resource.data) || 
+        request.resource.data.startTime == null || 
+        request.resource.data.endTime == null || 
+        request.resource.data.startTime == "" ||
+        request.resource.data.endTime == "" ||
+        request.resource.data.endTime > request.resource.data.startTime
+      );
+      allow delete: if true;
+    }
+    
+    // Settings collection
+    match /settings/{docId} {
+      allow read, write: if true;
+    }
+
+    // Weekly programs collection
+    match /weekly_programs/{docId} {
+      allow read, write: if true;
+    }
+
+    // Members collection
+    match /members/{docId} {
+      allow read, write: if true;
+    }
+
+    // Departments collection
+    match /departments/{docId} {
+      allow read, write: if true;
+    }
+
+    // Prayer requests collection
+    match /prayer_requests/{docId} {
+      allow read, write: if true;
+    }
+
+    // Department messages collection
+    match /dept_messages/{docId} {
+      allow read, write: if true;
+    }
+
+    // Uploaded images collection
+    match /uploaded_images/{docId} {
+      allow read, write: if true;
+    }
+  }
+}

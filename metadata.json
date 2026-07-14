@@ -1,0 +1,6 @@
+{
+  "name": "Comunidade Cristã ICTUS",
+  "description": "Aplicativo oficial da Comunidade Cristã ICTUS para agenda semanal, mensal e comunicação interna.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

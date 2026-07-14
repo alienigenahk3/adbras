@@ -1,0 +1,146 @@
+{
+  "entities": {
+    "settings": {
+      "title": "ChurchSettings",
+      "description": "Global settings for the church",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "address": { "type": "string" },
+        "logoUrl": { "type": "string" },
+        "logoFit": { "type": "string", "enum": ["contain", "cover"] },
+        "primaryColor": { "type": "string" },
+        "secondaryColor": { "type": "string" },
+        "socialMedia": { "type": "object" },
+        "youtubeUrl": { "type": "string" },
+        "instagramUrl": { "type": "string" },
+        "facebookUrl": { "type": "string" }
+      },
+      "required": ["name", "address"]
+    },
+    "event": {
+      "title": "ChurchEvent",
+      "description": "A scheduled event in the church calendar",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "date": { "type": "string" },
+        "time": { "type": "string" },
+        "type": { "type": "string", "enum": ["service", "event", "meeting", "other"] },
+        "recurrence": { "type": "string", "enum": ["none", "weekly", "monthly"] },
+        "recurrenceEndDate": { "type": "string" },
+        "isHighlight": { "type": "boolean" },
+        "departmentId": { "type": "string" }
+      },
+      "required": ["id", "title", "date", "time", "type"]
+    },
+    "weekly_program": {
+      "title": "WeeklyProgramItem",
+      "description": "An item in the recurring weekly program",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "dayOfWeek": { "type": "number" },
+        "time": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" }
+      },
+      "required": ["id", "dayOfWeek", "time", "title"]
+    },
+    "member": {
+      "title": "Member",
+      "description": "A church member",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "birthDate": { "type": "string" },
+        "address": { "type": "string" },
+        "joinDate": { "type": "string" },
+        "role": { "type": "string" },
+        "photoUrl": { "type": "string" },
+        "isActive": { "type": "boolean" },
+        "departments": { "type": "array" }
+      },
+      "required": ["id", "name"]
+    },
+    "department": {
+      "title": "Department",
+      "description": "A church department",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "leaderId": { "type": "string" },
+        "icon": { "type": "string" },
+        "membersCount": { "type": "number" }
+      },
+      "required": ["id", "name"]
+    },
+    "prayer_request": {
+      "title": "PrayerRequest",
+      "description": "A prayer request submitted by a user",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "request": { "type": "string" },
+        "date": { "type": "string" },
+        "isAnswered": { "type": "boolean" },
+        "answer": { "type": "string" },
+        "category": { "type": "string" }
+      },
+      "required": ["id", "name", "request", "date"]
+    },
+    "dept_message": {
+      "title": "DeptMessage",
+      "description": "Mural message in a department",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "departmentId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "senderUsername": { "type": "string" },
+        "text": { "type": "string" },
+        "date": { "type": "string" },
+        "expiresAt": { "type": "string" }
+      },
+      "required": ["id", "departmentId", "senderName", "text", "date"]
+    }
+  },
+  "firestore": {
+    "settings": {
+      "schema": "settings",
+      "description": "Global church settings collection"
+    },
+    "events": {
+      "schema": "event",
+      "description": "Collection of church events"
+    },
+    "weekly_programs": {
+      "schema": "weekly_program",
+      "description": "Collection of weekly programs"
+    },
+    "members": {
+      "schema": "member",
+      "description": "Collection of members"
+    },
+    "departments": {
+      "schema": "department",
+      "description": "Collection of departments"
+    },
+    "prayer_requests": {
+      "schema": "prayer_request",
+      "description": "Collection of prayer requests"
+    },
+    "dept_messages": {
+      "schema": "dept_message",
+      "description": "Collection of department messages"
+    }
+  }
+}
