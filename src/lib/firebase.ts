@@ -24,13 +24,14 @@ import { toSafeDate, validateTimeRangeString } from './utils';
 
 // Web client Firebase configuration from firebase-applet-config.json
 const firebaseConfig = {
-  apiKey: "AIzaSyDBSaRDiR7DFY-ieJ7G7O4Y2HT4MNYHHVo",
-  authDomain: "gen-lang-client-0163736003.firebaseapp.com",
-  projectId: "gen-lang-client-0163736003",
-  storageBucket: "gen-lang-client-0163736003.firebasestorage.app",
-  messagingSenderId: "346955543209",
-  appId: "1:346955543209:web:6df0175e23f1cfe78aafb8"
+  apiKey: "AIzaSyD5kXSRUG7Sau3fts2iY6IyuEOo5db5j70",
+  authDomain: "gen-lang-client-0198179583.firebaseapp.com",
+  projectId: "gen-lang-client-0198179583",
+  storageBucket: "gen-lang-client-0198179583.firebasestorage.app",
+  messagingSenderId: "828502882011",
+  appId: "1:828502882011:web:5b5eb5dcebb08debdd7efe"
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
